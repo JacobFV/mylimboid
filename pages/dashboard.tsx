@@ -6,11 +6,13 @@ import styles from '../styles/Home.module.css'
 import firebase from '@firebase/app'
 import 'firebase/auth'
 
-import { User } from './data/user'
+import '../data/user'
+import '../data/limboid'
+import { Limboid } from '../data/limboid'
 
 const Dashboard: NextPage = () => {
 
-    //firebase.auth().createUserWithEmailAndPassword(email, passowrd)
+    /*firebase.auth().createUserWithEmailAndPassword(email, passowrd)
     
 
     const dbRef = firebase.database().ref();
@@ -22,12 +24,13 @@ const Dashboard: NextPage = () => {
       }
     }).catch((error) => {
       console.error(error);
-    });
+    });*/
+    let limboids: Limboid[] = []
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Dashboard</title>
         <meta name="description" content="Dashboard" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -36,18 +39,26 @@ const Dashboard: NextPage = () => {
         <h1 className={styles.title}>
             Dashboard
         </h1>
+        {
+        // maybe search bar here 
+        }
 
         <div className={styles.grid}>
 
-          <a
-            href="./"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            {limboids.map(function(limboid: Limboid) {
+            return (
+                <a
+                    key={limboid.name}
+                    href="./{limboid.url}"
+                    className={styles.card}
+                >
+                    <h2>{limboid.name}</h2>
+                    <p>
+                        programatically generarated table and properties for this limboid
+                    </p>
+                </a>
+            )
+            })}
         </div>
       </main>
 

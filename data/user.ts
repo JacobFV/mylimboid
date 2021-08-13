@@ -1,16 +1,16 @@
 export class User {
     constructor(
-        public readonly userId: Number,
-        public readonly name: String,
-        public readonly email: String,
+        public readonly userId: number,
+        public readonly name: string,
+        public readonly email: string,
         public readonly viewableLimboids: {
-            limboidId: Number,
+            limboidId: number,
         },
         public readonly controllableLimboids: {
-            limboidId: Number,
+            limboidId: number,
         },
         public readonly ownedLimboids: {
-            limboidId: Number,
+            limboidId: number,
         }
     ) { }
 }
